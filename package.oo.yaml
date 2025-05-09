@@ -24,3 +24,6 @@ dependencies:
   oomol-preview: 0.0.3
   ffmpeg: 0.0.9
 icon: ./icon.png
+name: vocal-split
+description: Split vocal from audio file
+repository: https://github.com/oomol-flows/vocal-split
