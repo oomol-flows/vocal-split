@@ -11,7 +11,7 @@ dependencies = [
     "torch (==2.1.0)",
     "torchaudio (==2.1.0)",
     "numpy (==1.26.4)",
-    "demucs (>=4.0.1,<5.0.0)"
+    "demucs (>=4.0.1,<5.0.0)",
 ]
 
 [tool.poetry]

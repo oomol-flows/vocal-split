@@ -68,4 +68,18 @@ nodes:
         from_node:
           - node_id: split-by-vocal#1
             output_handle: no_vocals
+  - task: audio2midi::audio2midi
+    title: "audio2midi #1"
+    node_id: audio2midi#1
+    inputs_from:
+      - handle: input_file
+        value: /oomol-driver/oomol-storage/vocal-split/htdemucs/Zelda/Zelda_no_vocals.mp3
+        from_node:
+          - node_id: split-by-vocal#1
+            output_handle: no_vocals
+      - handle: output_file_dir
+        value: /oomol-driver/oomol-storage/vocal-split
+    description: |-
+      将背景音乐转换为midi文件
+      output_file_dir 是保存midi文件的地址
 title: Split vocal from video
