@@ -1,0 +1,30 @@
+nodes:
+  - task: self::split-by-vocal
+    title: "Split by vocal #1"
+    node_id: split-by-vocal#1
+    inputs_from:
+      - handle: input
+      - handle: outputDir
+      - handle: outputBaseName
+        value:
+    description: |-
+      将音频分为人声和非人声
+      outputDir: 输出文件存放地址
+      outputBaseName： 输出文件名称，不选择默认与输出文件一致
+  - task: oomol-preview::audio_preview
+    title: Vocal preview
+    node_id: audio_preview#1
+    inputs_from:
+      - handle: audio_path
+        from_node:
+          - node_id: split-by-vocal#1
+            output_handle: vocals
+  - task: oomol-preview::audio_preview
+    title: No-vocal preview
+    node_id: audio_preview#2
+    inputs_from:
+      - handle: audio_path
+        from_node:
+          - node_id: split-by-vocal#1
+            output_handle: no_vocals
+title: Split by vocal

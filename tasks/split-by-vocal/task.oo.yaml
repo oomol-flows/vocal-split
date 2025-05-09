@@ -1,0 +1,37 @@
+executor:
+  name: python
+  options:
+    entry: __init__.py
+inputs_def:
+  - handle: input
+    json_schema:
+      type: string
+      ui:widget: file
+  - handle: outputDir
+    json_schema:
+      type: string
+      ui:widget: save
+  - handle: outputBaseName
+    json_schema:
+      type: string
+    nullable: true
+    value:
+outputs_def:
+  - handle: vocals
+    json_schema:
+      type: string
+      ui:widget: file
+    nullable: false
+  - handle: no_vocals
+    json_schema:
+      type: string
+      ui:widget: file
+    nullable: false
+title: Split by vocal
+icon: ":twemoji:musical-notes:"
+description: |-
+  将音频按照人声和非人声分开
+  outputDir 是存放输出文件的文件夹
+  outputBaseName 是输出文件的名称，如果不填将采用输入文件名
+ui:
+  default_width: 487.453125

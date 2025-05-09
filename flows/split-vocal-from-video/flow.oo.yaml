@@ -1,0 +1,71 @@
+nodes:
+  - task: ffmpeg::read_media_to_ffmpeg
+    title: "Read Media To FFmpeg #1"
+    node_id: read_media_to_ffmpeg#1
+    inputs_from:
+      - handle: video_source
+    description: 选择需要处理的视频文件
+  - task: ffmpeg::audio_video_separation
+    title: "Audio Video Separation #1"
+    node_id: audio_video_separation#1
+    inputs_from:
+      - handle: ffmpeg_source
+        from_node:
+          - node_id: read_media_to_ffmpeg#1
+            output_handle: ffmpeg_source
+    description: 将视频文件的音频分离出来
+  - task: self::split-by-vocal
+    title: "Split by vocal #1"
+    node_id: split-by-vocal#1
+    inputs_from:
+      - handle: input
+        from_node:
+          - node_id: save_audio#1
+            output_handle: file_adress
+      - handle: outputDir
+        value: /oomol-driver/oomol-storage/vocal-split
+      - handle: outputBaseName
+        value: ""
+        from_node:
+          - node_id: read_media_to_ffmpeg#1
+            output_handle: file_name
+    description: |-
+      将音频文件分为人声和背景音
+      outputDir 为存放输出文件的地址
+  - task: ffmpeg::save_audio
+    title: "Save Audio #1"
+    node_id: save_audio#1
+    inputs_from:
+      - handle: audio_source
+        from_node:
+          - node_id: audio_video_separation#1
+            output_handle: only_audio
+      - handle: file_name
+        value: audio
+        from_node:
+          - node_id: read_media_to_ffmpeg#1
+            output_handle: file_name
+      - handle: format
+        value: mp3
+      - handle: save_address
+        value: /oomol-driver/oomol-storage
+    description: |-
+      将音频文件保存为mp3 格式
+      文件默认存放在 /oomol-driver/oomol-storage 下，可以自行选择存放地址
+  - task: oomol-preview::audio_preview
+    title: "Audio preview #1"
+    node_id: audio_preview#1
+    inputs_from:
+      - handle: audio_path
+        from_node:
+          - node_id: split-by-vocal#1
+            output_handle: vocals
+  - task: oomol-preview::audio_preview
+    title: "Audio preview #2"
+    node_id: audio_preview#2
+    inputs_from:
+      - handle: audio_path
+        from_node:
+          - node_id: split-by-vocal#1
+            output_handle: no_vocals
+title: Split vocal from video

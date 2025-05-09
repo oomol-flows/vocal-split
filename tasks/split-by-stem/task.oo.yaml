@@ -1,0 +1,60 @@
+inputs_def:
+  - handle: input
+    description: Input
+    json_schema:
+      type: string
+      ui:widget: file
+  - handle: outputDir
+    json_schema:
+      type: string
+      ui:widget: save
+  - handle: outputBaseName
+    json_schema:
+      type: string
+    value:
+    nullable: true
+outputs_def:
+  - handle: vocals
+    description: Output
+    json_schema:
+      type: string
+      ui:widget: file
+    nullable: false
+  - handle: drums
+    json_schema:
+      type: string
+      ui:widget: file
+    nullable: false
+  - handle: guitar
+    json_schema:
+      type: string
+      ui:widget: file
+    nullable: false
+  - handle: piano
+    json_schema:
+      type: string
+      ui:widget: file
+    nullable: false
+  - handle: bass
+    json_schema:
+      type: string
+      ui:widget: file
+    nullable: false
+  - handle: other
+    json_schema:
+      type: string
+      ui:widget: file
+    nullable: false
+ui:
+  default_width: 450
+executor:
+  name: python
+  options:
+    spawn: false
+    entry: __init__.py
+title: Split by stem
+icon: ":twemoji:musical-notes:"
+description: |-
+  将音频按照不同音轨分开，输出的音轨如果没有就会返回空
+  outputDir 是存放输出文件的文件夹
+  outputBaseName 是输出文件的名称，如果不填将采用输入文件名

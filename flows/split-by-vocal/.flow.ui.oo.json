@@ -1,0 +1,31 @@
+{
+  "nodes": {
+    "split-by-vocal#1": {
+      "contentWidth": 487.453125,
+      "rfNode": {
+        "position": {
+          "x": 2,
+          "y": 158
+        }
+      }
+    },
+    "audio_preview#1": {
+      "contentWidth": 450,
+      "rfNode": {
+        "position": {
+          "x": 585,
+          "y": -2.375
+        }
+      }
+    },
+    "audio_preview#2": {
+      "contentWidth": 450,
+      "rfNode": {
+        "position": {
+          "x": 585,
+          "y": 390
+        }
+      }
+    }
+  }
+}

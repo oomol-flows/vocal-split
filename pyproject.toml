@@ -1,0 +1,24 @@
+[project]
+name = "default"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "a1528zhang",email = "beingszhang@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "torch (==2.1.0)",
+    "torchaudio (==2.1.0)",
+    "numpy (==1.26.4)",
+    "demucs (>=4.0.1,<5.0.0)"
+]
+
+[tool.poetry]
+package-mode = false
+packages = [{include = "default", from = "src"}]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
