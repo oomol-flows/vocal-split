@@ -4,6 +4,9 @@ nodes:
     node_id: read_media_to_ffmpeg#1
     inputs_from:
       - handle: video_source
+        value: /oomol-driver/oomol-storage/Zelda.mp4
+        from_flow:
+          - input_handle: video_source
     description: 选择需要处理的视频文件
   - task: ffmpeg::audio_video_separation
     title: "Audio Video Separation #1"
@@ -24,6 +27,8 @@ nodes:
             output_handle: file_adress
       - handle: outputDir
         value: /oomol-driver/oomol-storage/vocal-split
+        from_flow:
+          - input_handle: output_dir
       - handle: outputBaseName
         value: ""
         from_node:
@@ -49,6 +54,8 @@ nodes:
         value: mp3
       - handle: save_address
         value: /oomol-driver/oomol-storage
+        from_flow:
+          - input_handle: audio_save_address
     description: |-
       将音频文件保存为mp3 格式
       文件默认存放在 /oomol-driver/oomol-storage 下，可以自行选择存放地址
@@ -68,18 +75,59 @@ nodes:
         from_node:
           - node_id: split-by-vocal#1
             output_handle: no_vocals
-  - task: audio2midi::audio2midi
-    title: "audio2midi #1"
-    node_id: audio2midi#1
-    inputs_from:
-      - handle: input_file
-        value: /oomol-driver/oomol-storage/vocal-split/htdemucs/Zelda/Zelda_no_vocals.mp3
-        from_node:
-          - node_id: split-by-vocal#1
-            output_handle: no_vocals
-      - handle: output_file_dir
-        value: /oomol-driver/oomol-storage/vocal-split
-    description: |-
-      将背景音乐转换为midi文件
-      output_file_dir 是保存midi文件的地址
 title: Split vocal from video
+inputs_def:
+  - handle: video_source
+    json_schema:
+      type: string
+      ui:widget: file
+    kind: primitive
+    nullable: false
+    description: Input
+  - handle: audio_save_address
+    json_schema:
+      type: string
+      minLength: 1
+      ui:widget: dir
+    kind: primitive
+    nullable: true
+    value: /oomol-driver/oomol-storage
+  - handle: output_dir
+    json_schema:
+      type: string
+      ui:widget: save
+    kind: primitive
+    nullable: false
+    value: /oomol-driver/oomol-storage/vocal-split
+outputs_def:
+  - handle: vocals
+    json_schema:
+      type: string
+      ui:widget: file
+    kind: primitive
+    nullable: false
+  - handle: no_vocals
+    json_schema:
+      type: string
+      ui:widget: file
+    kind: primitive
+    nullable: false
+outputs_from:
+  - handle: output_file_name
+    from_node:
+      []
+  - handle: no_vocals
+    from_node:
+      - node_id: split-by-vocal#1
+        output_handle: no_vocals
+  - handle: output1
+    from_node:
+      []
+  - handle: vocals
+    from_node:
+      - node_id: split-by-vocal#1
+        output_handle: vocals
+description: |-
+  video_source：需要分离音频的视频文件
+  audio_save_address：视频中分离出来的音频的存放地址
+  output_dir： 从音频中分离出人声即其他音轨的存放地址

@@ -4,7 +4,9 @@ nodes:
     node_id: split-by-stem#1
     inputs_from:
       - handle: input
+        value: /oomol-driver/oomol-storage/midi/yupan.wav
       - handle: outputDir
+        value: /oomol-driver/oomol-storage
       - handle: outputBaseName
         value:
     description: |-

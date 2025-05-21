@@ -1,4 +1,4 @@
-version: 0.0.3
+version: 0.0.4
 scripts:
   # Script executed when the container is first loaded
   # eg: bootstrap: poetry add pandas
@@ -23,9 +23,8 @@ scripts:
 dependencies:
   oomol-preview: 0.0.3
   ffmpeg: 0.0.9
-  audio2midi: 0.0.5
 icon: ./icon.png
 name: vocal-split
 description: Split vocal from audio file
 repository: https://github.com/oomol-flows/vocal-split
-releaseNotes: fix demo
+releaseNotes: put split-from-video to a block
