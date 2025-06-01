@@ -22,7 +22,7 @@ scripts:
     rm -r /app/workspace/ffmpeg6
 dependencies:
   oomol-preview: 0.0.3
-  ffmpeg: 0.0.9
+  ffmpeg: 0.1.0
 icon: ./icon.png
 name: vocal-split
 description: Split vocal from audio file
