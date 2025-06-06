@@ -1,6 +1,9 @@
+from oocana import Context
+import demucs.separate
+import os
+
 #region generated meta
 import typing
-from oocana import Context
 class Inputs(typing.TypedDict):
     input: str
     outputDir: str
@@ -9,10 +12,6 @@ class Outputs(typing.TypedDict):
     vocals: str
     no_vocals: str
 #endregion
-
-from oocana import Context
-import demucs.separate
-import os
 
 def main(params: Inputs, context: Context) -> None:
     print(params["input"], os.path.isfile(params["input"]))
