@@ -1,4 +1,4 @@
-version: 0.0.6
+version: 0.0.7
 scripts:
   # Script executed when the container is first loaded
   # eg: bootstrap: poetry add pandas
@@ -8,18 +8,18 @@ scripts:
     # demucs 只支持 6/5/4 版本的 ffmpeg
     test -f /usr/bin/ffmpeg && echo "ffmpeg6 installed" && exit
 
-    if [ ! -d /app/workspace/ffmpeg6 ]; then
-      mkdir ffmpeg6
+    if [ ! -d /tmp/ffmpeg6 ]; then
+      mkdir /tmp/ffmpeg6
     fi
 
-    cd /app/workspace/ffmpeg6
+    cd /tmp/ffmpeg6
     curl -OL https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-n6.1-latest-linuxarm64-gpl-6.1.tar.xz
     tar -xvf ./ffmpeg-n6.1-latest-linuxarm64-gpl-6.1.tar.xz
-    cp /app/workspace/ffmpeg6/ffmpeg-n6.1-latest-linuxarm64-gpl-6.1/bin/ffprobe /usr/bin/ffprobe
-    cp /app/workspace/ffmpeg6/ffmpeg-n6.1-latest-linuxarm64-gpl-6.1/bin/ffmpeg /usr/bin/ffmpeg
-    cp /app/workspace/ffmpeg6/ffmpeg-n6.1-latest-linuxarm64-gpl-6.1/bin/ffplay /usr/bin/ffplay
+    cp /tmp/ffmpeg6/ffmpeg-n6.1-latest-linuxarm64-gpl-6.1/bin/ffprobe /usr/bin/ffprobe
+    cp /tmp/ffmpeg6/ffmpeg-n6.1-latest-linuxarm64-gpl-6.1/bin/ffmpeg /usr/bin/ffmpeg
+    cp /tmp/ffmpeg6/ffmpeg-n6.1-latest-linuxarm64-gpl-6.1/bin/ffplay /usr/bin/ffplay
 
-    rm -r /app/workspace/ffmpeg6
+    rm -r /tmp/ffmpeg6
 dependencies:
   oomol-preview: 0.0.3
   ffmpeg: 0.1.0
@@ -27,4 +27,4 @@ icon: ./icon.png
 name: vocal-split
 description: Split vocal from audio file
 repository: https://github.com/oomol-flows/vocal-split
-releaseNotes: "fix: code format"
+releaseNotes: "fix: bootstrap failed"
