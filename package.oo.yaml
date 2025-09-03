@@ -3,6 +3,8 @@ scripts:
   # Script executed when the container is first loaded
   # eg: bootstrap: poetry add pandas
   bootstrap: |
+    # Install system dependencies for torchaudio
+    apt update && apt install -y ffmpeg libavcodec-dev libavformat-dev libavutil-dev libswscale-dev libswresample-dev
     npm install
     poetry install --no-root
     # demucs 只支持 6/5/4 版本的 ffmpeg

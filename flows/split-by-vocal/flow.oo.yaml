@@ -4,7 +4,7 @@ nodes:
     node_id: split-by-vocal#1
     inputs_from:
       - handle: input
-        value: /oomol-driver/oomol-storage/audio.mp3
+        value: /oomol-driver/oomol-storage/KUN - Jasmine (Official Video).mp3
       - handle: outputDir
         value: /oomol-driver/oomol-storage
       - handle: outputBaseName
