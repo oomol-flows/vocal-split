@@ -10,7 +10,7 @@
       }
     },
     "audio_preview#1": {
-      "contentWidth": 450,
+      "contentWidth": 350,
       "rfNode": {
         "position": {
           "x": 868.1444218145086,
@@ -19,7 +19,7 @@
       }
     },
     "audio_preview#2": {
-      "contentWidth": 450,
+      "contentWidth": 350,
       "rfNode": {
         "position": {
           "x": 868.1444218145086,
@@ -28,7 +28,7 @@
       }
     },
     "audio_preview#3": {
-      "contentWidth": 450,
+      "contentWidth": 350,
       "rfNode": {
         "position": {
           "x": 1496.75496717722,
@@ -37,7 +37,7 @@
       }
     },
     "audio_preview#4": {
-      "contentWidth": 450,
+      "contentWidth": 350,
       "rfNode": {
         "position": {
           "x": 1496.75496717722,
@@ -46,7 +46,7 @@
       }
     },
     "audio_preview#5": {
-      "contentWidth": 450,
+      "contentWidth": 350,
       "rfNode": {
         "position": {
           "x": 1496.75496717722,
@@ -55,7 +55,7 @@
       }
     },
     "audio_preview#6": {
-      "contentWidth": 450,
+      "contentWidth": 350,
       "rfNode": {
         "position": {
           "x": 868.1444218145086,
