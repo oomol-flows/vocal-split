@@ -4,25 +4,30 @@ executor:
     entry: __init__.py
 inputs_def:
   - handle: input
+    description: Input audio file to be separated into vocals and non-vocals
     json_schema:
       type: string
       ui:widget: file
   - handle: outputDir
+    description: Output directory to save the separated vocal files
     json_schema:
       type: string
       ui:widget: save
   - handle: outputBaseName
+    description: Base name for output files (optional, uses input filename if not specified)
     json_schema:
       type: string
     nullable: true
     value:
 outputs_def:
   - handle: vocals
+    description: Separated vocals track file
     json_schema:
       type: string
       ui:widget: file
     nullable: false
   - handle: no_vocals
+    description: Separated instrumental track file (no vocals)
     json_schema:
       type: string
       ui:widget: file
@@ -30,8 +35,8 @@ outputs_def:
 title: Split by vocal
 icon: ":twemoji:musical-notes:"
 description: |-
-  将音频按照人声和非人声分开
-  outputDir 是存放输出文件的文件夹
-  outputBaseName 是输出文件的名称，如果不填将采用输入文件名
+  Separates audio into vocals and instrumental tracks (non-vocals).
+  outputDir: Directory to save the separated vocal files
+  outputBaseName: Base name for output files (optional, uses input filename if not specified)
 ui:
   default_width: 487.453125
