@@ -1,4 +1,4 @@
-version: 0.0.11
+version: 0.0.12
 scripts:
   # Script executed when the container is first loaded
   # eg: bootstrap: poetry add pandas
@@ -29,5 +29,5 @@ icon: ./icon.png
 name: vocal-split
 description: "%split-vocal-from-audio-file%"
 repository: https://github.com/oomol-flows/vocal-split
-releaseNotes: fix error
 displayName: "%vocal-split%"
+releaseNotes: update

@@ -10,8 +10,8 @@ class Inputs(typing.TypedDict):
     outputDir: str
     outputBaseName: str | None
 class Outputs(typing.TypedDict):
-    vocals: str
-    no_vocals: str
+    vocals: typing.NotRequired[str]
+    no_vocals: typing.NotRequired[str]
 #endregion
 
 def main(params: Inputs, context: Context) -> Outputs:

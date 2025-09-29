@@ -10,12 +10,12 @@ class Inputs(typing.TypedDict):
     outputDir: str
     outputBaseName: str | None
 class Outputs(typing.TypedDict):
-    vocals: str
-    drums: str
-    guitar: str
-    piano: str
-    bass: str
-    other: str
+    vocals: typing.NotRequired[str]
+    drums: typing.NotRequired[str]
+    guitar: typing.NotRequired[str]
+    piano: typing.NotRequired[str]
+    bass: typing.NotRequired[str]
+    other: typing.NotRequired[str]
 #endregion
 
 def main(params: Inputs, context: Context) -> Outputs:
