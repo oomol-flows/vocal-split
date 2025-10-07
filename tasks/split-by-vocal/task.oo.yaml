@@ -4,39 +4,36 @@ executor:
     entry: __init__.py
 inputs_def:
   - handle: input
-    description: Input audio file to be separated into vocals and non-vocals
+    description: "%input-audio-file-to-be-separated-into-vocals-and-non-vocals%"
     json_schema:
       type: string
       ui:widget: file
   - handle: outputDir
-    description: Output directory to save the separated vocal files
+    description: "%output-directory-location-to-save-the-separated-vocal-files%"
     json_schema:
       type: string
       ui:widget: save
   - handle: outputBaseName
-    description: Base name for output files (optional, uses input filename if not specified)
+    description: "%output-base-name-custom-name-for-output-files-optional-defaults2%"
     json_schema:
       type: string
-    nullable: true
     value:
+    nullable: true
 outputs_def:
   - handle: vocals
-    description: Separated vocals track file
+    description: "Output: separated vocals track file"
     json_schema:
       type: string
       ui:widget: file
     nullable: false
   - handle: no_vocals
-    description: Separated instrumental track file (no vocals)
+    description: "Output: separated instrumental track file (no vocals)"
     json_schema:
       type: string
       ui:widget: file
     nullable: false
-title: Split by vocal
+title: "%split-by-vocal2%"
 icon: ":twemoji:musical-notes:"
-description: |-
-  Separates audio into vocals and instrumental tracks (non-vocals).
-  outputDir: Directory to save the separated vocal files
-  outputBaseName: Base name for output files (optional, uses input filename if not specified)
+description: "%this-block-separates-audio-files-into-vocals-and-instrumental-tr%"
 ui:
   default_width: 487.453125

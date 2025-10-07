@@ -1,53 +1,53 @@
 inputs_def:
   - handle: input
-    description: Input audio file to be separated into different stems
+    description: "%input-audio-file-to-be-separated-into-different-instrument-stems%"
     json_schema:
       type: string
       ui:widget: file
   - handle: outputDir
-    description: Output directory to save the separated stem files
+    description: "%output-directory-location-to-save-the-separated-stem-files%"
     json_schema:
       type: string
       ui:widget: save
   - handle: outputBaseName
-    description: Base name for output files (optional, uses input filename if not specified)
+    description: "%output-base-name-custom-name-for-output-files-optional-defaults%"
     json_schema:
       type: string
     value:
     nullable: true
 outputs_def:
   - handle: vocals
-    description: Separated vocals track file
+    description: "Output: separated vocals track file"
     json_schema:
       type: string
       ui:widget: file
     nullable: false
   - handle: drums
-    description: Separated drums track file
+    description: "Output: separated drums track file"
     json_schema:
       type: string
       ui:widget: file
     nullable: false
   - handle: guitar
-    description: Separated guitar track file
+    description: "Output: separated guitar track file"
     json_schema:
       type: string
       ui:widget: file
     nullable: false
   - handle: piano
-    description: Separated piano track file
+    description: "Output: separated piano track file"
     json_schema:
       type: string
       ui:widget: file
     nullable: false
   - handle: bass
-    description: Separated bass track file
+    description: "Output: separated bass track file"
     json_schema:
       type: string
       ui:widget: file
     nullable: false
   - handle: other
-    description: Other separated instruments track file
+    description: "Output: other separated instruments track file"
     json_schema:
       type: string
       ui:widget: file
@@ -59,9 +59,6 @@ executor:
   options:
     spawn: false
     entry: __init__.py
-title: Split by stem
+title: "%split-by-stem2%"
 icon: ":twemoji:musical-notes:"
-description: |-
-  Separates audio into different instrument stems (vocals, drums, guitar, piano, bass, other). Empty tracks are returned if no content is detected for that stem.
-  outputDir: Directory to save the separated stem files
-  outputBaseName: Base name for output files (optional, uses input filename if not specified)
+description: "%this-block-separates-audio-files-into-individual-instrument-stem%"

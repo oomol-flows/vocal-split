@@ -1,38 +1,11 @@
 {
   "nodes": {
-    "read_media_to_ffmpeg#1": {
-      "contentWidth": 350,
-      "rfNode": {
-        "position": {
-          "x": 143,
-          "y": 300
-        }
-      }
-    },
-    "audio_video_separation#1": {
-      "contentWidth": 418.8919806538622,
-      "rfNode": {
-        "position": {
-          "x": 702,
-          "y": 148
-        }
-      }
-    },
     "split-by-vocal#1": {
       "contentWidth": 487.453125,
       "rfNode": {
         "position": {
-          "x": 1700,
-          "y": 203.75
-        }
-      }
-    },
-    "save_audio#1": {
-      "contentWidth": 447.06350824621484,
-      "rfNode": {
-        "position": {
-          "x": 1187,
-          "y": 0
+          "x": 972,
+          "y": 101
         }
       }
     },
@@ -40,8 +13,8 @@
       "contentWidth": 450,
       "rfNode": {
         "position": {
-          "x": 2253,
-          "y": 74.39738622555902
+          "x": 1525,
+          "y": 0
         }
       }
     },
@@ -49,8 +22,16 @@
       "contentWidth": 450,
       "rfNode": {
         "position": {
-          "x": 2253,
-          "y": 519.5
+          "x": 1525,
+          "y": 189
+        }
+      }
+    },
+    "extract-audio#1": {
+      "rfNode": {
+        "position": {
+          "x": 486,
+          "y": 25
         }
       }
     }
@@ -59,16 +40,16 @@
     "input": {
       "rfNode": {
         "position": {
-          "x": -367.46407107985425,
-          "y": 203.75
+          "x": 0,
+          "y": 173
         }
       }
     },
     "output": {
       "rfNode": {
         "position": {
-          "x": 2775.129937467138,
-          "y": 257.75
+          "x": 1540,
+          "y": 378
         }
       }
     }

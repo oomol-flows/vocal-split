@@ -1,6 +1,6 @@
 nodes:
   - task: self::split-by-stem
-    title: "Split by stem #1"
+    title: "%split-by-stem-1%"
     node_id: split-by-stem#1
     inputs_from:
       - handle: input
@@ -10,12 +10,9 @@ nodes:
         value: /oomol-driver/oomol-storage
       - handle: outputBaseName
         value:
-    description: |-
-      将音频按照不同音轨分开，输出的音轨如果没有就不会返回内容
-      outputDir: 输出文件存放地址
-      outputBaseName： 输出文件名称，不选择默认与输出文件一致
+    description: "%outputdir-outputbasename%"
   - task: oomol-preview::audio_preview
-    title: Vocal preview
+    title: "%vocal-preview%"
     node_id: audio_preview#1
     inputs_from:
       - handle: audio_path
@@ -23,7 +20,7 @@ nodes:
           - node_id: split-by-stem#1
             output_handle: vocals
   - task: oomol-preview::audio_preview
-    title: Drums preview
+    title: "%drums-preview%"
     node_id: audio_preview#2
     inputs_from:
       - handle: audio_path
@@ -31,7 +28,7 @@ nodes:
           - node_id: split-by-stem#1
             output_handle: drums
   - task: oomol-preview::audio_preview
-    title: Guitar preview
+    title: "%guitar-preview%"
     node_id: audio_preview#3
     inputs_from:
       - handle: audio_path
@@ -39,7 +36,7 @@ nodes:
           - node_id: split-by-stem#1
             output_handle: guitar
   - task: oomol-preview::audio_preview
-    title: Piano preview
+    title: "%piano-preview%"
     node_id: audio_preview#4
     inputs_from:
       - handle: audio_path
@@ -47,7 +44,7 @@ nodes:
           - node_id: split-by-stem#1
             output_handle: piano
   - task: oomol-preview::audio_preview
-    title: Bass preview
+    title: "%bass-preview%"
     node_id: audio_preview#5
     inputs_from:
       - handle: audio_path
@@ -55,11 +52,11 @@ nodes:
           - node_id: split-by-stem#1
             output_handle: bass
   - task: oomol-preview::audio_preview
-    title: Others preview
+    title: "%others-preview%"
     node_id: audio_preview#6
     inputs_from:
       - handle: audio_path
         from_node:
           - node_id: split-by-stem#1
             output_handle: other
-title: Split by stem
+title: "%split-by-stem%"
