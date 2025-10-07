@@ -9,29 +9,11 @@
         }
       }
     },
-    "audio_preview#1": {
-      "contentWidth": 450,
-      "rfNode": {
-        "position": {
-          "x": 1525,
-          "y": 0
-        }
-      }
-    },
-    "audio_preview#2": {
-      "contentWidth": 450,
-      "rfNode": {
-        "position": {
-          "x": 1525,
-          "y": 189
-        }
-      }
-    },
     "extract-audio#1": {
       "rfNode": {
         "position": {
-          "x": 486,
-          "y": 25
+          "x": 495.1655028316921,
+          "y": -115
         }
       }
     }

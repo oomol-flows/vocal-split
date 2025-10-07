@@ -4,17 +4,17 @@ executor:
     entry: __init__.py
 inputs_def:
   - handle: input
-    description: "%input-audio-file-to-be-separated-into-vocals-and-non-vocals%"
+    description: "%input-audio-file-to-be-separated-into-vocals-and-non-vocals2%"
     json_schema:
       type: string
       ui:widget: file
   - handle: outputDir
-    description: "%output-directory-location-to-save-the-separated-vocal-files%"
+    description: "%output-directory-location-to-save-the-separated-vocal-files2%"
     json_schema:
       type: string
       ui:widget: save
   - handle: outputBaseName
-    description: "%output-base-name-custom-name-for-output-files-optional-defaults2%"
+    description: "%output-base-name-custom-name-for-output-files-optional-defaults4%"
     json_schema:
       type: string
     value:

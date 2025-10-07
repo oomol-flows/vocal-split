@@ -1,16 +1,16 @@
 inputs_def:
   - handle: input
-    description: "%input-audio-file-to-be-separated-into-different-instrument-stems%"
+    description: "%input-audio-file-to-be-separated-into-different-instrument-stems2%"
     json_schema:
       type: string
       ui:widget: file
   - handle: outputDir
-    description: "%output-directory-location-to-save-the-separated-stem-files%"
+    description: "%output-directory-location-to-save-the-separated-stem-files2%"
     json_schema:
       type: string
       ui:widget: save
   - handle: outputBaseName
-    description: "%output-base-name-custom-name-for-output-files-optional-defaults%"
+    description: "%output-base-name-custom-name-for-output-files-optional-defaults3%"
     json_schema:
       type: string
     value:

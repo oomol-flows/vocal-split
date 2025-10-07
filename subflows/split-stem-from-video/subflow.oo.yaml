@@ -1,0 +1,131 @@
+nodes:
+  - node_id: extract-audio#1
+    title: "%extract-audio-from-video-12%"
+    inputs_from:
+      - handle: video_file
+        from_flow:
+          - input_handle: video_file
+      - handle: output_format
+        value: mp3
+      - handle: audio_quality
+        value: 192
+    task: ffmpeg::extract-audio
+  - node_id: split-by-stem#1
+    title: "%1%"
+    inputs_from:
+      - handle: input
+        from_node:
+          - node_id: extract-audio#1
+            output_handle: audio_file
+      - handle: outputDir
+        from_flow:
+          - input_handle: outputDir
+      - handle: outputBaseName
+        value: null
+        from_flow:
+          - input_handle: outputBaseName
+    task: self::split-by-stem
+title: "%split-stem-from-video%"
+description: "%this-subflow-extracts-audio-from-a-video-file-and-separates-it-i%"
+inputs_def:
+  - handle: video_file
+    description: "%input-video-file-to-extract-and-separate-audio-stems-from%"
+    json_schema:
+      type: string
+      ui:widget: file
+      ui:options:
+        filters:
+          - name: Video Files
+            extensions:
+              - mp4
+              - avi
+              - mov
+              - mkv
+              - webm
+              - flv
+        excludeAll: true
+    nullable: false
+    executor_name: python
+  - handle: outputDir
+    description: "%output-directory-to-save-the-separated-stem-files%"
+    json_schema:
+      type: string
+      ui:widget: save
+    value: /oomol-driver/oomol-storage
+    nullable: false
+    executor_name: python
+  - handle: outputBaseName
+    description: "%output-base-name-custom-name-for-output-files-optional-defaults5%"
+    json_schema:
+      type: string
+    value:
+    nullable: true
+    executor_name: python
+outputs_def:
+  - handle: vocals
+    json_schema:
+      type: string
+      ui:widget: file
+    nullable: false
+    description: "Output: separated vocals track file"
+    executor_name: python
+  - handle: drums
+    json_schema:
+      type: string
+      ui:widget: file
+    nullable: false
+    description: "Output: separated drums track file"
+    executor_name: python
+  - handle: guitar
+    json_schema:
+      type: string
+      ui:widget: file
+    nullable: false
+    description: "Output: separated guitar track file"
+    executor_name: python
+  - handle: piano
+    json_schema:
+      type: string
+      ui:widget: file
+    nullable: false
+    description: "Output: separated piano track file"
+    executor_name: python
+  - handle: bass
+    json_schema:
+      type: string
+      ui:widget: file
+    nullable: false
+    description: "Output: separated bass track file"
+    executor_name: python
+  - handle: other
+    json_schema:
+      type: string
+      ui:widget: file
+    nullable: false
+    description: "Output: other separated instruments track file"
+    executor_name: python
+outputs_from:
+  - handle: vocals
+    from_node:
+      - node_id: split-by-stem#1
+        output_handle: vocals
+  - handle: drums
+    from_node:
+      - node_id: split-by-stem#1
+        output_handle: drums
+  - handle: guitar
+    from_node:
+      - node_id: split-by-stem#1
+        output_handle: guitar
+  - handle: piano
+    from_node:
+      - node_id: split-by-stem#1
+        output_handle: piano
+  - handle: bass
+    from_node:
+      - node_id: split-by-stem#1
+        output_handle: bass
+  - handle: other
+    from_node:
+      - node_id: split-by-stem#1
+        output_handle: other

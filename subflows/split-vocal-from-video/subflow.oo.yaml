@@ -1,124 +1,78 @@
 nodes:
-  - task: ffmpeg::read_media_to_ffmpeg
-    title: "%read-media-to-ffmpeg-1%"
-    node_id: read_media_to_ffmpeg#1
-    inputs_from:
-      - handle: video_source
-        value: /oomol-driver/oomol-storage/Zelda.mp4
-        from_flow:
-          - input_handle: video_source
-    description: "%key%"
-  - task: ffmpeg::audio_video_separation
-    title: "%audio-video-separation-1%"
-    node_id: audio_video_separation#1
-    inputs_from:
-      - handle: ffmpeg_source
-        from_node:
-          - node_id: read_media_to_ffmpeg#1
-            output_handle: ffmpeg_source
-    description: "%key2%"
   - task: self::split-by-vocal
     title: "%split-by-vocal-12%"
     node_id: split-by-vocal#1
     inputs_from:
       - handle: input
         from_node:
-          - node_id: save_audio#1
-            output_handle: file_adress
+          - node_id: extract-audio#1
+            output_handle: audio_file
       - handle: outputDir
         value: /oomol-driver/oomol-storage/vocal-split
         from_flow:
           - input_handle: output_dir
       - handle: outputBaseName
         value: ""
-        from_node:
-          - node_id: read_media_to_ffmpeg#1
-            output_handle: file_name
-    description: "%outputdir%"
-  - task: ffmpeg::save_audio
-    title: "%save-audio-1%"
-    node_id: save_audio#1
-    inputs_from:
-      - handle: audio_source
-        from_node:
-          - node_id: audio_video_separation#1
-            output_handle: only_audio
-      - handle: file_name
-        value: audio
-        from_node:
-          - node_id: read_media_to_ffmpeg#1
-            output_handle: file_name
-      - handle: format
-        value: mp3
-      - handle: save_address
-        value: /oomol-driver/oomol-storage
         from_flow:
-          - input_handle: audio_save_address
-    description: "%mp3-oomol-driver-oomol-storage%"
-  - task: oomol-preview::audio_preview
-    title: "%audio-preview-1%"
-    node_id: audio_preview#1
-    inputs_from:
-      - handle: audio_path
+          - input_handle: outputBaseName
         from_node:
-          - node_id: split-by-vocal#1
-            output_handle: vocals
-  - task: oomol-preview::audio_preview
-    title: "%audio-preview-2%"
-    node_id: audio_preview#2
+          []
+    description: "%outputdir%"
+  - node_id: extract-audio#1
+    title: "%extract-audio-from-video-1%"
     inputs_from:
-      - handle: audio_path
-        from_node:
-          - node_id: split-by-vocal#1
-            output_handle: no_vocals
-title: "%split-vocal-from-video%"
+      - handle: video_file
+        from_flow:
+          - input_handle: video_source
+      - handle: output_format
+        value: mp3
+      - handle: audio_quality
+        value: 192
+    task: ffmpeg::extract-audio
+title: "%split-vocal-from-video2%"
 inputs_def:
   - handle: video_source
-    description: "%input%"
+    description: "%input-video-file-to-extract-and-separate-vocals-from%"
     json_schema:
       type: string
       ui:widget: file
     kind: primitive
     nullable: false
-  - handle: audio_save_address
-    json_schema:
-      type: string
-      minLength: 1
-      ui:widget: dir
-    kind: primitive
-    value: /oomol-driver/oomol-storage
-    nullable: true
   - handle: output_dir
+    description: "%output-directory-to-save-the-separated-audio-files%"
     json_schema:
       type: string
       ui:widget: save
     kind: primitive
     value: /oomol-driver/oomol-storage/vocal-split
     nullable: false
+  - handle: outputBaseName
+    description: "%output-base-name-custom-name-for-output-files-optional%"
+    json_schema:
+      type: string
+    value: ""
+    nullable: true
+    executor_name: python
 outputs_def:
   - handle: vocals
+    description: "Output: separated vocals track file"
     json_schema:
       type: string
       ui:widget: file
     kind: primitive
     nullable: false
   - handle: no_vocals
+    description: "Output: separated instrumental track file (no vocals)"
     json_schema:
       type: string
       ui:widget: file
     kind: primitive
     nullable: false
 outputs_from:
-  - handle: output_file_name
-    from_node:
-      []
   - handle: no_vocals
     from_node:
       - node_id: split-by-vocal#1
         output_handle: no_vocals
-  - handle: output1
-    from_node:
-      []
   - handle: vocals
     from_node:
       - node_id: split-by-vocal#1
