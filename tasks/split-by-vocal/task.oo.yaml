@@ -35,7 +35,7 @@ outputs_def:
       ui:widget: file
     nullable: false
 title: "%split-by-vocal2%"
-icon: ":twemoji:musical-notes:"
+icon: ":twemoji:studio-microphone:"
 description: "%this-block-separates-audio-files-into-vocals-and-instrumental-tr%"
 ui:
   default_width: 487.453125

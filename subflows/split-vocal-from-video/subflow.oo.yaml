@@ -3,20 +3,18 @@ nodes:
     title: "%split-by-vocal-12%"
     node_id: split-by-vocal#1
     inputs_from:
-      - handle: input
+      - handle: output_dir
+        value:
+        from_flow:
+          - input_handle: output_dir
+      - handle: output_base_name
+        value:
+        from_flow:
+          - input_handle: output_base_name
+      - handle: audio_file
         from_node:
           - node_id: extract-audio#1
             output_handle: audio_file
-      - handle: outputDir
-        value: /oomol-driver/oomol-storage/vocal-split
-        from_flow:
-          - input_handle: output_dir
-      - handle: outputBaseName
-        value: ""
-        from_flow:
-          - input_handle: outputBaseName
-        from_node:
-          []
     description: "%outputdir%"
   - node_id: extract-audio#1
     title: "%extract-audio-from-video-1%"
@@ -39,18 +37,16 @@ inputs_def:
     kind: primitive
     nullable: false
   - handle: output_dir
-    description: "%output-directory-to-save-the-separated-audio-files%"
     json_schema:
       type: string
-      ui:widget: save
-    kind: primitive
-    nullable: false
-  - handle: outputBaseName
-    description: "%output-base-name-custom-name-for-output-files-optional%"
-    json_schema:
-      type: string
-    value:
+      ui:widget: dir
     nullable: true
+    executor_name: python
+  - handle: output_base_name
+    json_schema:
+      type: string
+    nullable: true
+    value:
     executor_name: python
 outputs_def:
   - handle: vocals
@@ -77,3 +73,4 @@ outputs_from:
       - node_id: split-by-vocal#1
         output_handle: vocals
 description: "%video_source-audio_save_address-output_dir%"
+icon: ":twemoji:microphone:"

@@ -62,5 +62,5 @@ executor:
     spawn: false
     entry: __init__.py
 title: "%split-by-stem2%"
-icon: ":twemoji:musical-notes:"
+icon: ":twemoji:guitar:"
 description: "%this-block-separates-audio-files-into-individual-instrument-stem%"

@@ -19,11 +19,11 @@ nodes:
             output_handle: audio_file
       - handle: output_dir
         from_flow:
-          - input_handle: outputDir
+          - input_handle: output_dir
       - handle: output_base_name
         value: null
         from_flow:
-          - input_handle: outputBaseName
+          - input_handle: output_base_name
     task: self::split-by-stem
 title: "%split-stem-from-video%"
 description: "%this-subflow-extracts-audio-from-a-video-file-and-separates-it-i%"
@@ -46,20 +46,17 @@ inputs_def:
         excludeAll: true
     nullable: false
     executor_name: python
-  - handle: outputDir
-    description: "%output-directory-to-save-the-separated-stem-files%"
+  - handle: output_dir
     json_schema:
       type: string
-      ui:widget: save
-    value: /oomol-driver/oomol-storage
-    nullable: false
-    executor_name: python
-  - handle: outputBaseName
-    description: "%output-base-name-custom-name-for-output-files-optional-defaults5%"
-    json_schema:
-      type: string
-    value:
+      ui:widget: dir
     nullable: true
+    executor_name: python
+  - handle: output_base_name
+    json_schema:
+      type: string
+    nullable: true
+    value:
     executor_name: python
 outputs_def:
   - handle: vocals
@@ -129,3 +126,4 @@ outputs_from:
     from_node:
       - node_id: split-by-stem#1
         output_handle: other
+icon: ":twemoji:video-camera:"
