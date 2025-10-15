@@ -20,21 +20,21 @@ class Outputs(typing.TypedDict):
 
 def main(params: Inputs, context: Context) -> Outputs:
     """
-    将音频分离为不同音轨（人声、鼓、吉他、钢琴、贝斯、其他）
+    Separate audio into different tracks (vocals, drums, guitar, piano, bass, other)
     """
     input_path = Path(params["audio_file"])
 
-    # 验证输入文件
+    # Validate input file
     if not input_path.exists() or not input_path.is_file():
-        raise FileNotFoundError(f"输入文件不存在: {params['audio_file']}")
-    
-    # 获取输入文件基础名称
+        raise FileNotFoundError(f"Input file does not exist: {params['audio_file']}")
+
+    # Get input file base name
     input_basename = input_path.stem
-    
-    # 确定输出文件名称
+
+    # Determine output file name
     output_name = params["outputBaseName"] or input_basename
-    
-    # 执行音频分离
+
+    # Execute audio separation
     model = 'htdemucs_6s'
     try:
         demucs.separate.main([
@@ -46,15 +46,15 @@ def main(params: Inputs, context: Context) -> Outputs:
             str(input_path)
         ])
     except Exception as e:
-        raise RuntimeError(f"音频分离失败: {str(e)}")
+        raise RuntimeError(f"Audio separation failed: {str(e)}")
 
-    # 构建输出目录路径
+    # Build output directory path
     output_model_dir = Path(params["output_dir"]) / model / input_basename
-    
+
     if not output_model_dir.exists():
-        raise RuntimeError(f"输出目录不存在: {output_model_dir}")
-    
-    # 定义音轨文件映射
+        raise RuntimeError(f"Output directory does not exist: {output_model_dir}")
+
+    # Define stem file mapping
     stem_outputs = {
         "vocals": f"{output_name}_vocals.mp3",
         "drums": f"{output_name}_drums.mp3", 
@@ -63,10 +63,10 @@ def main(params: Inputs, context: Context) -> Outputs:
         "bass": f"{output_name}_bass.mp3",
         "other": f"{output_name}_other.mp3"
     }
-    
-    # 构建结果字典
+
+    # Build results dictionary
     results = {}
-    
+
     for stem_name, filename in stem_outputs.items():
         file_path = output_model_dir / filename
         if file_path.exists():
@@ -74,7 +74,7 @@ def main(params: Inputs, context: Context) -> Outputs:
             results[stem_name] = path_str
             context.output(stem_name, path_str)
         else:
-            # 如果文件不存在，返回空字符串
+            # If file does not exist, return empty string
             results[stem_name] = ""
             context.output(stem_name, "")
     
