@@ -9,6 +9,8 @@ inputs_def:
     json_schema:
       type: string
       ui:widget: dir
+    value: null
+    nullable: true
   - handle: outputBaseName
     description: "%output-base-name-custom-name-for-output-files-optional-defaults3%"
     json_schema:

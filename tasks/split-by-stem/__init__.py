@@ -7,7 +7,7 @@ from pathlib import Path
 import typing
 class Inputs(typing.TypedDict):
     audio_file: str
-    output_dir: str
+    output_dir: str | None
     outputBaseName: str | None
 class Outputs(typing.TypedDict):
     vocals: typing.NotRequired[str]
@@ -34,6 +34,9 @@ def main(params: Inputs, context: Context) -> Outputs:
     # Determine output file name
     output_name = params["outputBaseName"] or input_basename
 
+    # Determine output directory
+    output_dir = params["output_dir"] or context.session_dir
+
     # Execute audio separation
     model = 'htdemucs_6s'
     try:
@@ -41,7 +44,7 @@ def main(params: Inputs, context: Context) -> Outputs:
             "--mp3",
             "-v",
             "-n", model,
-            "-o", params["output_dir"],
+            "-o", output_dir,
             "--filename", f"{{track}}/{output_name}_{{stem}}.{{ext}}",
             str(input_path)
         ])
@@ -49,7 +52,7 @@ def main(params: Inputs, context: Context) -> Outputs:
         raise RuntimeError(f"Audio separation failed: {str(e)}")
 
     # Build output directory path
-    output_model_dir = Path(params["output_dir"]) / model / input_basename
+    output_model_dir = Path(output_dir) / model / input_basename
 
     if not output_model_dir.exists():
         raise RuntimeError(f"Output directory does not exist: {output_model_dir}")
