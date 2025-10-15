@@ -10,14 +10,14 @@ requires-python = ">=3.10"
 dependencies = [
     "numpy (==1.26.4)",
     "demucs (>=4.0.1,<5.0.0)",
-    "torch (==2.1.0)",
-    "torchaudio (==2.1.0)",
+    "torch (>=2.1.0,<2.3.0)",
+    "torchaudio (>=2.1.0,<2.3.0)",
 ]
 
 [project.optional-dependencies]
 torch = [
-    "torch==2.1.0",
-    "torchaudio==2.1.0",
+    "torch>=2.1.0,<2.3.0",
+    "torchaudio>=2.1.0,<2.3.0",
 ]
 
 [tool.poetry]
@@ -25,15 +25,6 @@ package-mode = false
 packages = [{include = "default", from = "src"}]
 
 
-[[tool.poetry.source]]
-name = "pytorch"
-url = "https://download.pytorch.org/whl/cu121"
-priority = "supplemental"
-
-
-[tool.poetry.dependencies]
-torch = {source = "pytorch"}
-torchaudio = {source = "pytorch"}
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
