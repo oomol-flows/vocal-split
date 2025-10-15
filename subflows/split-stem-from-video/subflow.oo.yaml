@@ -50,13 +50,14 @@ inputs_def:
     json_schema:
       type: string
       ui:widget: dir
+    value:
     nullable: true
     executor_name: python
   - handle: output_base_name
     json_schema:
       type: string
-    nullable: true
     value:
+    nullable: true
     executor_name: python
 outputs_def:
   - handle: vocals
