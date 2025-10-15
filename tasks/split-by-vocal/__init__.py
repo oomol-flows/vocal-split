@@ -6,9 +6,9 @@ from pathlib import Path
 #region generated meta
 import typing
 class Inputs(typing.TypedDict):
-    input: str
-    outputDir: str
-    outputBaseName: str | None
+    audio_file: str
+    output_dir: str | None
+    output_base_name: str | None
 class Outputs(typing.TypedDict):
     vocals: typing.NotRequired[str]
     no_vocals: typing.NotRequired[str]
@@ -16,54 +16,57 @@ class Outputs(typing.TypedDict):
 
 def main(params: Inputs, context: Context) -> Outputs:
     """
-    将音频分离为人声和非人声部分
+    Separate audio into vocals and instrumental parts
     """
-    input_path = Path(params["input"])
-    
-    # 验证输入文件
+    input_path = Path(params["audio_file"])
+
+    # Validate input file
     if not input_path.exists() or not input_path.is_file():
-        raise FileNotFoundError(f"输入文件不存在: {params['input']}")
-    
-    # 获取输入文件基础名称
+        raise FileNotFoundError(f"Input file does not exist: {params['audio_file']}")
+
+    # Get input file base name
     input_basename = input_path.stem
-    
-    # 确定输出文件名称
-    output_name = params["outputBaseName"] or input_basename
-    
-    # 执行音频分离
+
+    # Determine output file name
+    output_name = params["output_base_name"] or input_basename
+
+    # Determine output directory
+    output_dir = params["output_dir"] or context.session_dir
+
+    # Execute audio separation
     model = 'htdemucs'
     try:
         demucs.separate.main([
-            "--mp3", 
-            "--two-stems", "vocals", 
-            "-v", 
-            "-n", model, 
-            "-o", params["outputDir"], 
-            "--filename", f"{{track}}/{output_name}_{{stem}}.{{ext}}", 
+            "--mp3",
+            "--two-stems", "vocals",
+            "-v",
+            "-n", model,
+            "-o", output_dir,
+            "--filename", f"{{track}}/{output_name}_{{stem}}.{{ext}}",
             str(input_path)
         ])
     except Exception as e:
-        raise RuntimeError(f"音频分离失败: {str(e)}")
-    
-    # 构建输出目录路径
-    output_model_dir = Path(params["outputDir"]) / model / input_basename
-    
+        raise RuntimeError(f"Audio separation failed: {str(e)}")
+
+    # Build output directory path
+    output_model_dir = Path(output_dir) / model / input_basename
+
     if not output_model_dir.exists():
-        raise RuntimeError(f"输出目录不存在: {output_model_dir}")
-    
-    # 查找输出文件
+        raise RuntimeError(f"Output directory does not exist: {output_model_dir}")
+
+    # Find output files
     vocals_file = output_model_dir / f"{output_name}_vocals.mp3"
     no_vocals_file = output_model_dir / f"{output_name}_no_vocals.mp3"
-    
+
     if not vocals_file.exists():
-        raise FileNotFoundError(f"人声文件未找到: {vocals_file}")
+        raise FileNotFoundError(f"Vocals file not found: {vocals_file}")
     if not no_vocals_file.exists():
-        raise FileNotFoundError(f"非人声文件未找到: {no_vocals_file}")
-    
+        raise FileNotFoundError(f"Instrumental file not found: {no_vocals_file}")
+
     vocals_path = str(vocals_file)
     no_vocals_path = str(no_vocals_file)
-    
-    # 设置输出
+
+    # Set outputs
     context.output("vocals", vocals_path)
     context.output("no_vocals", no_vocals_path)
     

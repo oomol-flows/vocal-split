@@ -3,21 +3,23 @@ executor:
   options:
     entry: __init__.py
 inputs_def:
-  - handle: input
+  - handle: audio_file
     description: "%input-audio-file-to-be-separated-into-vocals-and-non-vocals2%"
     json_schema:
       type: string
       ui:widget: file
-  - handle: outputDir
+  - handle: output_dir
     description: "%output-directory-location-to-save-the-separated-vocal-files2%"
     json_schema:
       type: string
-      ui:widget: save
-  - handle: outputBaseName
+      ui:widget: dir
+    value: null
+    nullable: true
+  - handle: output_base_name
     description: "%output-base-name-custom-name-for-output-files-optional-defaults4%"
     json_schema:
       type: string
-    value:
+    value: null
     nullable: true
 outputs_def:
   - handle: vocals
