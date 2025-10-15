@@ -10,7 +10,7 @@
       }
     },
     "audio_preview#1": {
-      "contentWidth": 450,
+      "contentWidth": 350,
       "rfNode": {
         "position": {
           "x": 553,
@@ -19,11 +19,20 @@
       }
     },
     "audio_preview#2": {
-      "contentWidth": 450,
+      "contentWidth": 350,
       "rfNode": {
         "position": {
-          "x": 582.1448716145276,
-          "y": 410.8248561772384
+          "x": 553,
+          "y": 189
+        }
+      }
+    },
+    "split-by-vocal#2": {
+      "contentWidth": 487.453125,
+      "rfNode": {
+        "position": {
+          "x": 416,
+          "y": 395.21542967794267
         }
       }
     }
