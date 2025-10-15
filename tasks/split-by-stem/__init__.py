@@ -8,7 +8,7 @@ import typing
 class Inputs(typing.TypedDict):
     audio_file: str
     output_dir: str | None
-    outputBaseName: str | None
+    output_base_name: str | None
 class Outputs(typing.TypedDict):
     vocals: typing.NotRequired[str]
     drums: typing.NotRequired[str]
@@ -32,7 +32,7 @@ def main(params: Inputs, context: Context) -> Outputs:
     input_basename = input_path.stem
 
     # Determine output file name
-    output_name = params["outputBaseName"] or input_basename
+    output_name = params["output_base_name"] or input_basename
 
     # Determine output directory
     output_dir = params["output_dir"] or context.session_dir

@@ -9,9 +9,9 @@ inputs_def:
     json_schema:
       type: string
       ui:widget: dir
-    value: null
+    value:
     nullable: true
-  - handle: outputBaseName
+  - handle: output_base_name
     description: "%output-base-name-custom-name-for-output-files-optional-defaults3%"
     json_schema:
       type: string
@@ -55,7 +55,7 @@ outputs_def:
       ui:widget: file
     nullable: false
 ui:
-  default_width: 450
+  default_width: 652.6403204215783
 executor:
   name: python
   options:

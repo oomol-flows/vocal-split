@@ -20,7 +20,7 @@ nodes:
       - handle: output_dir
         from_flow:
           - input_handle: outputDir
-      - handle: outputBaseName
+      - handle: output_base_name
         value: null
         from_flow:
           - input_handle: outputBaseName
