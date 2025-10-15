@@ -6,7 +6,7 @@ from pathlib import Path
 #region generated meta
 import typing
 class Inputs(typing.TypedDict):
-    input: str
+    audio_file: str
     outputDir: str
     outputBaseName: str | None
 class Outputs(typing.TypedDict):
@@ -22,11 +22,11 @@ def main(params: Inputs, context: Context) -> Outputs:
     """
     将音频分离为不同音轨（人声、鼓、吉他、钢琴、贝斯、其他）
     """
-    input_path = Path(params["input"])
-    
+    input_path = Path(params["audio_file"])
+
     # 验证输入文件
     if not input_path.exists() or not input_path.is_file():
-        raise FileNotFoundError(f"输入文件不存在: {params['input']}")
+        raise FileNotFoundError(f"输入文件不存在: {params['audio_file']}")
     
     # 获取输入文件基础名称
     input_basename = input_path.stem

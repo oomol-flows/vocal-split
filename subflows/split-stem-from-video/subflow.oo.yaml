@@ -13,7 +13,7 @@ nodes:
   - node_id: split-by-stem#1
     title: "%1%"
     inputs_from:
-      - handle: input
+      - handle: audio_file
         from_node:
           - node_id: extract-audio#1
             output_handle: audio_file

@@ -1,5 +1,5 @@
 inputs_def:
-  - handle: input
+  - handle: audio_file
     description: "%input-audio-file-to-be-separated-into-different-instrument-stems2%"
     json_schema:
       type: string

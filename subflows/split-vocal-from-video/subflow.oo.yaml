@@ -44,13 +44,12 @@ inputs_def:
       type: string
       ui:widget: save
     kind: primitive
-    value: /oomol-driver/oomol-storage/vocal-split
     nullable: false
   - handle: outputBaseName
     description: "%output-base-name-custom-name-for-output-files-optional%"
     json_schema:
       type: string
-    value: ""
+    value:
     nullable: true
     executor_name: python
 outputs_def:
