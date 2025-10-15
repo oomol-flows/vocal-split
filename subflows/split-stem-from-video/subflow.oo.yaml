@@ -17,7 +17,7 @@ nodes:
         from_node:
           - node_id: extract-audio#1
             output_handle: audio_file
-      - handle: outputDir
+      - handle: output_dir
         from_flow:
           - input_handle: outputDir
       - handle: outputBaseName

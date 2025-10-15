@@ -4,11 +4,11 @@ inputs_def:
     json_schema:
       type: string
       ui:widget: file
-  - handle: outputDir
+  - handle: output_dir
     description: "%output-directory-location-to-save-the-separated-stem-files2%"
     json_schema:
       type: string
-      ui:widget: save
+      ui:widget: dir
   - handle: outputBaseName
     description: "%output-base-name-custom-name-for-output-files-optional-defaults3%"
     json_schema:

@@ -7,7 +7,7 @@ from pathlib import Path
 import typing
 class Inputs(typing.TypedDict):
     audio_file: str
-    outputDir: str
+    output_dir: str
     outputBaseName: str | None
 class Outputs(typing.TypedDict):
     vocals: typing.NotRequired[str]
@@ -38,18 +38,18 @@ def main(params: Inputs, context: Context) -> Outputs:
     model = 'htdemucs_6s'
     try:
         demucs.separate.main([
-            "--mp3", 
-            "-v", 
-            "-n", model, 
-            "-o", params["outputDir"], 
-            "--filename", f"{{track}}/{output_name}_{{stem}}.{{ext}}", 
+            "--mp3",
+            "-v",
+            "-n", model,
+            "-o", params["output_dir"],
+            "--filename", f"{{track}}/{output_name}_{{stem}}.{{ext}}",
             str(input_path)
         ])
     except Exception as e:
         raise RuntimeError(f"音频分离失败: {str(e)}")
-    
+
     # 构建输出目录路径
-    output_model_dir = Path(params["outputDir"]) / model / input_basename
+    output_model_dir = Path(params["output_dir"]) / model / input_basename
     
     if not output_model_dir.exists():
         raise RuntimeError(f"输出目录不存在: {output_model_dir}")
