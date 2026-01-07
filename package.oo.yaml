@@ -1,4 +1,4 @@
-version: 0.1.8
+version: 0.1.9
 scripts:
   # Script executed when the container is first loaded
   # eg: bootstrap: poetry add pandas
@@ -15,11 +15,22 @@ scripts:
     fi
 
     cd /tmp/ffmpeg6
-    curl -OL https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-n6.1-latest-linuxarm64-gpl-6.1.tar.xz
-    tar -xvf ./ffmpeg-n6.1-latest-linuxarm64-gpl-6.1.tar.xz
-    cp /tmp/ffmpeg6/ffmpeg-n6.1-latest-linuxarm64-gpl-6.1/bin/ffprobe /usr/bin/ffprobe
-    cp /tmp/ffmpeg6/ffmpeg-n6.1-latest-linuxarm64-gpl-6.1/bin/ffmpeg /usr/bin/ffmpeg
-    cp /tmp/ffmpeg6/ffmpeg-n6.1-latest-linuxarm64-gpl-6.1/bin/ffplay /usr/bin/ffplay
+    # Detect system architecture
+    ARCH=$(uname -m)
+    if [ "$ARCH" = "x86_64" ]; then
+      FFMPEG_ARCH="linux64"
+    elif [ "$ARCH" = "aarch64" ]; then
+      FFMPEG_ARCH="linuxarm64"
+    else
+      echo "Unsupported architecture: $ARCH"
+      exit 1
+    fi
+
+    curl -OL https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-n6.1-latest-${FFMPEG_ARCH}-gpl-6.1.tar.xz
+    tar -xvf ./ffmpeg-n6.1-latest-${FFMPEG_ARCH}-gpl-6.1.tar.xz
+    cp /tmp/ffmpeg6/ffmpeg-n6.1-latest-${FFMPEG_ARCH}-gpl-6.1/bin/ffprobe /usr/bin/ffprobe
+    cp /tmp/ffmpeg6/ffmpeg-n6.1-latest-${FFMPEG_ARCH}-gpl-6.1/bin/ffmpeg /usr/bin/ffmpeg
+    cp /tmp/ffmpeg6/ffmpeg-n6.1-latest-${FFMPEG_ARCH}-gpl-6.1/bin/ffplay /usr/bin/ffplay
 
     rm -r /tmp/ffmpeg6
 dependencies:
