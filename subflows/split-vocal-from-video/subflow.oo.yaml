@@ -51,14 +51,14 @@ inputs_def:
     executor_name: python
 outputs_def:
   - handle: vocals
-    description: "Output: separated vocals track file"
+    description: "%output-separated-vocals-track-file4%"
     json_schema:
       type: string
       ui:widget: file
     kind: primitive
     nullable: false
   - handle: no_vocals
-    description: "Output: separated instrumental track file (no vocals)"
+    description: "%output-separated-instrumental-track-file-no-vocals2%"
     json_schema:
       type: string
       ui:widget: file

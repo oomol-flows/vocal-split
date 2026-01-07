@@ -40,5 +40,21 @@
   "input-video-file-to-extract-and-separate-audio-stems-from": "输入视频文件以提取和分离音频轨道",
   "output-directory-to-save-the-separated-stem-files": "用于保存分离后的音轨文件的输出目录",
   "output-base-name-custom-name-for-output-files-optional-defaults5": "输出基本名称：输出文件的自定义名称（可选，默认为输入文件名）",
-  "extract-audio-from-video-12": "从视频 #1 提取音频"
+  "extract-audio-from-video-12": "从视频 #1 提取音频",
+  "output-separated-vocals-track-file": "输出：分离的人声音轨文件",
+  "output-separated-drums-track-file": "输出：分离的鼓轨道文件",
+  "output-separated-guitar-track-file": "输出：分离的吉他音轨文件",
+  "output-separated-piano-track-file": "输出：分离的钢琴音轨文件",
+  "output-separated-bass-track-file": "输出：分离的贝斯音轨文件",
+  "output-other-separated-instruments-track-file": "输出：其他分离乐器轨道文件",
+  "output-separated-vocals-track-file2": "输出：分离的人声音轨文件",
+  "output-separated-instrumental-track-file-no-vocals": "输出：分离的伴奏音轨文件（无人声）",
+  "output-separated-vocals-track-file3": "输出：分离的人声音轨文件",
+  "output-separated-drums-track-file2": "输出：分离的鼓轨道文件",
+  "output-separated-guitar-track-file2": "输出：分离的吉他音轨文件",
+  "output-separated-piano-track-file2": "输出：分离的钢琴音轨文件",
+  "output-separated-bass-track-file2": "输出：分离的贝斯音轨文件",
+  "output-other-separated-instruments-track-file2": "输出：其他分离乐器轨道文件",
+  "output-separated-vocals-track-file4": "输出：分离的人声音轨文件",
+  "output-separated-instrumental-track-file-no-vocals2": "输出：分离的伴奏音轨文件（无人声）"
 }

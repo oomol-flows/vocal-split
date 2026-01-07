@@ -4,52 +4,54 @@ inputs_def:
     json_schema:
       type: string
       ui:widget: file
+  - group: Advanced Options
+    collapsed: true
   - handle: output_dir
     description: "%output-directory-location-to-save-the-separated-stem-files2%"
     json_schema:
       type: string
       ui:widget: dir
-    value:
     nullable: true
+    value: null
   - handle: output_base_name
     description: "%output-base-name-custom-name-for-output-files-optional-defaults3%"
     json_schema:
       type: string
-    value:
     nullable: true
+    value: null
 outputs_def:
   - handle: vocals
-    description: "Output: separated vocals track file"
+    description: "%output-separated-vocals-track-file%"
     json_schema:
       type: string
       ui:widget: file
     nullable: false
   - handle: drums
-    description: "Output: separated drums track file"
+    description: "%output-separated-drums-track-file%"
     json_schema:
       type: string
       ui:widget: file
     nullable: false
   - handle: guitar
-    description: "Output: separated guitar track file"
+    description: "%output-separated-guitar-track-file%"
     json_schema:
       type: string
       ui:widget: file
     nullable: false
   - handle: piano
-    description: "Output: separated piano track file"
+    description: "%output-separated-piano-track-file%"
     json_schema:
       type: string
       ui:widget: file
     nullable: false
   - handle: bass
-    description: "Output: separated bass track file"
+    description: "%output-separated-bass-track-file%"
     json_schema:
       type: string
       ui:widget: file
     nullable: false
   - handle: other
-    description: "Output: other separated instruments track file"
+    description: "%output-other-separated-instruments-track-file%"
     json_schema:
       type: string
       ui:widget: file

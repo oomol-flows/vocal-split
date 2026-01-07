@@ -1,4 +1,4 @@
-version: 0.1.6
+version: 0.1.8
 scripts:
   # Script executed when the container is first loaded
   # eg: bootstrap: poetry add pandas
@@ -24,7 +24,7 @@ scripts:
     rm -r /tmp/ffmpeg6
 dependencies:
   oomol-preview: 0.0.3
-  ffmpeg: 0.2.9
+  ffmpeg: 0.5.0
 icon: ./icon.png
 name: vocal-split
 description: "%split-vocal-from-audio-file%"

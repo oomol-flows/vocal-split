@@ -61,46 +61,46 @@ inputs_def:
     executor_name: python
 outputs_def:
   - handle: vocals
+    description: "%output-separated-vocals-track-file3%"
     json_schema:
       type: string
       ui:widget: file
     nullable: false
-    description: "Output: separated vocals track file"
     executor_name: python
   - handle: drums
+    description: "%output-separated-drums-track-file2%"
     json_schema:
       type: string
       ui:widget: file
     nullable: false
-    description: "Output: separated drums track file"
     executor_name: python
   - handle: guitar
+    description: "%output-separated-guitar-track-file2%"
     json_schema:
       type: string
       ui:widget: file
     nullable: false
-    description: "Output: separated guitar track file"
     executor_name: python
   - handle: piano
+    description: "%output-separated-piano-track-file2%"
     json_schema:
       type: string
       ui:widget: file
     nullable: false
-    description: "Output: separated piano track file"
     executor_name: python
   - handle: bass
+    description: "%output-separated-bass-track-file2%"
     json_schema:
       type: string
       ui:widget: file
     nullable: false
-    description: "Output: separated bass track file"
     executor_name: python
   - handle: other
+    description: "%output-other-separated-instruments-track-file2%"
     json_schema:
       type: string
       ui:widget: file
     nullable: false
-    description: "Output: other separated instruments track file"
     executor_name: python
 outputs_from:
   - handle: vocals
