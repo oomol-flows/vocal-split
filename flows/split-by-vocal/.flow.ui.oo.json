@@ -1,47 +1,11 @@
 {
   "nodes": {
-    "split-by-vocal#1": {
-      "contentWidth": 487.453125,
-      "rfNode": {
-        "position": {
-          "x": 0,
-          "y": 6.5
-        }
-      }
-    },
-    "audio_preview#1": {
-      "contentWidth": 350,
-      "rfNode": {
-        "position": {
-          "x": 553,
-          "y": 0
-        }
-      }
-    },
-    "audio_preview#2": {
-      "contentWidth": 350,
-      "rfNode": {
-        "position": {
-          "x": 553,
-          "y": 189
-        }
-      }
-    },
     "split-by-vocal#2": {
       "contentWidth": 487.453125,
       "rfNode": {
         "position": {
           "x": 416,
           "y": 395.21542967794267
-        }
-      }
-    },
-    "+python#1": {
-      "contentWidth": 450,
-      "rfNode": {
-        "position": {
-          "x": 1428.2894265483108,
-          "y": -39.3121485186017
         }
       }
     }

@@ -1,39 +1,12 @@
 nodes:
-  - task: self::split-by-vocal
-    title: "%split-by-vocal-1%"
-    node_id: split-by-vocal#1
-    inputs_from:
-      - handle: input
-        value: /oomol-driver/oomol-storage/Area22211_audio.mp3
-      - handle: outputDir
-        value: /oomol-driver/oomol-storage
-      - handle: outputBaseName
-        value:
-    description: "%outputdir-outputbasename2%"
-  - task: oomol-preview::audio_preview
-    title: "%vocal-preview2%"
-    node_id: audio_preview#1
-    inputs_from:
-      - handle: audio_path
-        from_node:
-          - node_id: split-by-vocal#1
-            output_handle: vocals
-  - task: oomol-preview::audio_preview
-    title: "%no-vocal-preview%"
-    node_id: audio_preview#2
-    inputs_from:
-      - handle: audio_path
-        from_node:
-          - node_id: split-by-vocal#1
-            output_handle: no_vocals
   - node_id: split-by-vocal#2
     title: "按人声分离 #2"
     inputs_from:
-      - handle: input
-        value: /oomol-driver/oomol-storage/Area22211_audio.mp3
-      - handle: outputDir
-        value: /oomol-driver/oomol-storage/export/export
-      - handle: outputBaseName
-        value: null
+      - handle: output_dir
+        value:
+      - handle: output_base_name
+        value:
+      - handle: audio_file
+        value: /oomol-driver/oomol-storage/KUN - Jasmine (Official Video)_audio.mp3
     task: self::split-by-vocal
 title: "%split-by-vocal%"
